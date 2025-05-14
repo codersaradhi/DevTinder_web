@@ -7,7 +7,7 @@ import Profile from "./Profile";
 function App() {
   return (
     <>
-      <BrowserRouter basename="/">
+      <BrowserRouter >
         <Routes>
           <Route path="/" element={<Body />}>
             <Route path="/login" element={<Login/>} />
