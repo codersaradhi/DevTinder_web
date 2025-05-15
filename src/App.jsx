@@ -1,19 +1,21 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Body from "./Body";
-import Login from "./Login";
-import Profile from "./Profile";
-
+import Body from "../src/components/Body";
+import Login from "../src/components/Login";
+import Profile from "../src/components/Profile";
+import { Provider } from "react-redux";
+import appStore from "./Utils/appStore";
+import Feed from "../src/components/Feed";
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element:<Body/>,
-    children:[
-      {path:"login",element:<Login/>},
-      {path:"profile",element:<Profile/>}
+    path: "/",
+    element: <Body />,
+    children: [
+      { path: "/", element: <Feed /> },
+      { path: "login", element: <Login /> },
+      { path: "profile", element: <Profile /> },
     ],
   },
-
 ]);
 
 // function App() {
@@ -31,6 +33,10 @@ const router = createBrowserRouter([
 //   );
 // }
 
-export default function App(){
-  return <RouterProvider router={router}/>
-};
+export default function App() {
+  return (
+    <Provider store={appStore}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
+}
